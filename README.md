@@ -1,32 +1,45 @@
-Deep-Learning-Exp6
-Developing a Deep Learning Model for NER using LSTM
-AIM
+# Deep-Learning-Exp6
+
+ ## **Developing a Deep Learning Model for NER using LSTM**
+
+## **AIM**
+
 To develop an LSTM-based model for recognizing the named entities in the text.
 
-THEORY
-Neural Network Model
-image
-DESIGN STEPS
-Step 1: Load the dataset (ner_dataset.csv) using pandas and fill missing values with .ffill().
+## **THEORY**
 
-Step 2: Extract all unique words and tags, then create mappings — word2idx and tag2idx.
+### **Neural Network Model**
 
-Step 3: Group by "Sentence #" to form complete sentences as lists of (word, POS, tag) tuples.
+<img width="890" height="471" alt="image" src="https://github.com/user-attachments/assets/23cf9b51-e2aa-499a-b3a8-d7212c94b616" />
 
-Step 4: Convert each sentence’s words and tags into their corresponding integer indices.
+## **DESIGN STEPS**
 
-Step 5: Apply padding to all sequences (e.g., max_len = 50) using keras.preprocessing.sequence.pad_sequences.
+**Step 1:** Load the dataset (ner_dataset.csv) using pandas and fill missing values with .ffill().
 
-Step 6: Split the data into training and testing sets with train_test_split.
+**Step 2:** Extract all unique words and tags, then create mappings — word2idx and tag2idx.
 
-Step 7: Build a BiLSTM model using Embedding → SpatialDropout1D → Bidirectional(LSTM) → TimeDistributed(Dense(softmax)).
+**Step 3:** Group by "Sentence #" to form complete sentences as lists of (word, POS, tag) tuples.
 
-Step 8: Compile the model with Adam and sparse_categorical_crossentropy, train (~3 epochs), then predict and compare true vs predicted tags.
+**Step 4:** Convert each sentence’s words and tags into their corresponding integer indices.
 
-PROGRAM
-Name: Rahul M R
+**Step 5:** Apply padding to all sequences (e.g., max_len = 50) using keras.preprocessing.sequence.pad_sequences.
 
-Register Number: 2305002005
+**Step 6:** Split the data into training and testing sets with train_test_split.
+
+**Step 7:** Build a BiLSTM model using
+Embedding → SpatialDropout1D → Bidirectional(LSTM) → TimeDistributed(Dense(softmax)).
+
+**Step 8:** Compile the model with Adam and sparse_categorical_crossentropy, train (~3 epochs), then predict and compare true vs predicted tags.
+
+---
+
+## **PROGRAM**
+
+**Name: Boopathy S**
+
+**Register Number: 2305003002**
+
+```python
 
 import matplotlib.pyplot as plt, pandas as pd, numpy as np
 from tensorflow.keras.preprocessing import sequence
@@ -78,13 +91,34 @@ p = np.argmax(model.predict(np.array([Xte[i]])), axis=-1)[0]
 print("{:15}{:5}\t{}".format("Word", "True", "Pred")); print("-"*30)
 for w,t,pd_ in zip(Xte[i], yte[i], p):
     print("{:15}{}\t{}".format(words[w-1], tags[t], tags[pd_]))
-OUTPUT
-Epoch Training
-image
-Loss Vs Epoch Plot
-image
-image
-Sample Text Prediction
-image
-RESULT
-Thus, The program to develop an LSTM-based model for recognizing the named entities in the text has been successfully executed.
+
+```
+
+
+
+
+## **OUTPUT**
+
+### **Epoch Training**
+
+<img width="1471" height="210" alt="image" src="https://github.com/user-attachments/assets/7781cc03-280e-4762-b9f4-3f8a6a93a25d" />
+
+
+### **Loss Vs Epoch Plot**
+
+<img width="565" height="418" alt="image" src="https://github.com/user-attachments/assets/79933256-f6ec-4048-9a1e-46289f023074" />
+
+---
+
+<img width="556" height="413" alt="image" src="https://github.com/user-attachments/assets/c6498c40-7678-4252-bbe7-29e319f7883f" />
+
+---
+### **Sample Text Prediction**
+
+<img width="381" height="664" alt="image" src="https://github.com/user-attachments/assets/60c2f6cc-772a-46fa-97c9-f5a00615aefe" />
+
+---
+
+## **RESULT**
+
+Thus, The program to  develop an LSTM-based model for recognizing the named entities in the text has been successfully executed.
