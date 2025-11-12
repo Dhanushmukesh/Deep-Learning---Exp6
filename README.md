@@ -35,9 +35,9 @@ Embedding → SpatialDropout1D → Bidirectional(LSTM) → TimeDistributed(Dense
 
 ## **PROGRAM**
 
-**Name: Boopathy S**
+**Name: Dhanush G**
 
-**Register Number: 2305003002**
+**Register Number: 2305002006**
 
 ```python
 
